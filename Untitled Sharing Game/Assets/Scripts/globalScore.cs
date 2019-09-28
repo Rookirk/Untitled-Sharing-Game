@@ -29,6 +29,11 @@ public class globalScore : MonoBehaviour
     	levelManager = GetComponent<levelManager>();
     }
 
+    /*public void loadEndScreen(){
+    	updateScore();
+    	levelManager.loadScene("EndScreen");
+    }*/
+
     public void updateScore(){
     	timeScore = timerComp.getTime();
     }
