@@ -9,6 +9,9 @@ public class globalScore : MonoBehaviour
 
 	public float timeScore;
 
+	private timer timerComp;
+	private levelManager levelManager;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,5 +22,19 @@ public class globalScore : MonoBehaviour
         else if(instance != this){
         	Destroy(gameObject);
         }
+    }
+
+    void Start(){
+    	timerComp = GetComponent<timer>();
+    	levelManager = GetComponent<levelManager>();
+    }
+
+    public void loadEndScreen(){
+    	updateScore();
+    	levelManager.loadScene("EndScreen");
+    }
+
+    public void updateScore(){
+    	timeScore = timerComp.getTime();
     }
 }

@@ -5,13 +5,7 @@ using UnityEngine;
 public class timer : MonoBehaviour
 {
 
-	public float time = 0.0f;
-
-	private globalScore globalScore;
-
-	void Start(){
-		globalScore = GetComponent<globalScore>();
-	}
+	private float time = 0.0f;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +13,7 @@ public class timer : MonoBehaviour
         time += Time.deltaTime;
     }
 
-    public void updateScore(){
-    	globalScore.timeScore = time;
+    public float getTime(){
+    	return time;
     }
 }
