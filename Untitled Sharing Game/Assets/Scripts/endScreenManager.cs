@@ -18,5 +18,6 @@ public class endScreenManager : MonoBehaviour
 		scoreDisplay = textDisplay.GetComponent<Text>();
 
 		scoreDisplay.text = globalScore.timeScore.ToString();
+		Debug.Log(scoreDisplay.text);
 	}
 }
