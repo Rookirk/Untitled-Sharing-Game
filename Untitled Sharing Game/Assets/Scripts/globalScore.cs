@@ -5,23 +5,19 @@ using UnityEngine;
 public class globalScore : MonoBehaviour
 {
 	// https://www.sitepoint.com/saving-data-between-scenes-in-unity/
-	public static globalScore Instance;
+	public static globalScore instance;
+
+	public float timeScore;
 
     // Start is called before the first frame update
     void Awake()
     {
-        if(Instance == null){
+        if(instance == null){
         	DontDestroyOnLoad(gameObject);
-        	Instance = this;
+        	instance = this;
         }
-        else if(Instance != this){
+        else if(instance != this){
         	Destroy(gameObject);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
