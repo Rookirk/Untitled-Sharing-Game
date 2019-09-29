@@ -469,6 +469,8 @@ GameObject:
   - component: {fileID: 539308978}
   - component: {fileID: 539308977}
   - component: {fileID: 539308976}
+  - component: {fileID: 539308980}
+  - component: {fileID: 539308979}
   m_Layer: 5
   m_Name: playButton
   m_TagString: Untagged
@@ -567,7 +569,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b59233a774f35ef48b3ec5fefb6f27b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98cc01a078d513941a96d789cd64f4ed, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -585,6 +587,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539308974}
   m_CullTransparentMesh: 0
+--- !u!114 &539308979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539308974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99fb2ae58ff1363468b656d0500ea257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unHover: {fileID: 21300000, guid: 98cc01a078d513941a96d789cd64f4ed, type: 3}
+  yesHover: {fileID: 21300000, guid: b59233a774f35ef48b3ec5fefb6f27b1, type: 3}
+--- !u!114 &539308980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539308974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 539308979}
+          m_MethodName: changeOnHover
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 539308979}
+          m_MethodName: notHovering
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1240704773
 GameObject:
   m_ObjectHideFlags: 0
