@@ -19,25 +19,29 @@ public class playerInput : MonoBehaviour
     //Indicates which player is being played
     public float player1;
     
+    
     //The movement vectors for movement.
     //Used to move the player with speed etc
     private Vector2 moveVelocity;
     //Used to move to set direction of the vector.
     private Vector2 moveInput = new Vector2(0,0);
     //Jump vector, you jump
-    private Vector2 jumpVector = new Vector2(0, 500);
+    private Vector2 jumpVector = new Vector2(0, 800);
+    
+    //Jump Timer
+    private float jumpTime = .5f;
     
     //Idk what the fuck this is it's the rigidbody so it's like the body of the character or something
     private Rigidbody2D rb;
 
     //Movement checks
     //States guide
-    ///  0 = not being used 
-    ///  -1 = specifically for jumps, means that it is in the air
+    ///  0 = not being used
     ///  1 = being used
-    private int leftCheck = -1;
-    private int rightCheck = -1;
-    private int jumpCheck = -1;
+    ///  -1 = specifically for jumps, means that it is in the air
+    private int leftCheck = 0;
+    private int rightCheck = 0;
+    private int jumpCheck = 0;
     
     void Start()
     {
@@ -58,8 +62,11 @@ public class playerInput : MonoBehaviour
                 leftCheck = 1;
             if(Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.RightArrow))
                 rightCheck = 1;
-            if (Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.UpArrow) && jumpCheck == 0)
+            {
                 jumpCheck = 1;
+                rb.AddForce(jumpVector);
+            }
         }
         if (player1 == 2)
         {
@@ -67,8 +74,11 @@ public class playerInput : MonoBehaviour
                 leftCheck = 1;
             if(Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.D))
                 rightCheck = 1;
-            if(Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKeyDown(KeyCode.W) && jumpCheck == 0)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKeyDown(KeyCode.W) && jumpCheck == 0)
+            {
                 jumpCheck = 1;
+                rb.AddForce(jumpVector);
+            }
         }
 
         //Resets the the thing so you dont slide off into oblivion
@@ -82,10 +92,20 @@ public class playerInput : MonoBehaviour
             rightCheck = 0;
             moveInput.x = 0;
         }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            jumpCheck = -1;
+            moveInput.y = -1;
+        }
+        
+        //Counts down the time for when jumpCheck is at -1
+        if(jumpCheck == -1)
+            jumpTime -= Time.deltaTime;
+
+        if (jumpTime <= 0.0f)
         {
             jumpCheck = 0;
-            moveInput.y = 0;
+            jumpTime = .5f;
         }
         
         //Points vector left
@@ -104,8 +124,7 @@ public class playerInput : MonoBehaviour
         //Jump vector up
         if (jumpCheck == 1)
         {
-            rb.AddForce(jumpVector);
-            jumpCheck = -1;
+            
         }
 
         rb.AddForce(moveVelocity);
