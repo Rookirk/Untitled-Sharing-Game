@@ -19,6 +19,7 @@ public class EggPickUp : MonoBehaviour
     //called when this Egg collides with a Player
     private void OnCollisionEnter2D(Collision2D col)
     {
+        Debug.Log("collided with test Egg");
         if (col.gameObject.name == "Player")
         {
             Debug.Log("Egg was hit by Player, otherCollider = " + col.otherCollider + "incoming = " + col.gameObject);
