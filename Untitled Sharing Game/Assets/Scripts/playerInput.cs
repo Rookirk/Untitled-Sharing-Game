@@ -17,7 +17,7 @@ public class playerInput : MonoBehaviour
     public float speed;
     
     //Indicates which player is being played
-    public float playerCharacter;
+    public float player1;
     
     
     //The movement vectors for movement.
@@ -56,7 +56,7 @@ public class playerInput : MonoBehaviour
         /// Checks if the person is player one and the correct inputs attached to it
         /// If the key is being used, 
         /// (playyer one is WASD, 2 is arrow keys)
-        if (playerCharacter == 1)
+        if (player1 == 1)
         {
             if(Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftArrow))
                 leftCheck = 1;
@@ -68,7 +68,7 @@ public class playerInput : MonoBehaviour
                 rb.AddForce(jumpVector);
             }
         }
-        if (playerCharacter == 2)
+        if (player1 == 2)
         {
             if(Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.A))
                 leftCheck = 1;
