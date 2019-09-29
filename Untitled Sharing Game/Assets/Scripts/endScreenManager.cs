@@ -17,7 +17,7 @@ public class endScreenManager : MonoBehaviour
 		textDisplay = GameObject.Find("Score");
 		scoreDisplay = textDisplay.GetComponent<Text>();
 
-		scoreDisplay.text = globalScore.timeScore.ToString();
+		scoreDisplay.text = "You survived " + globalScore.timeScore.ToString() + " seconds";
 		Debug.Log(scoreDisplay.text);
 	}
 }
