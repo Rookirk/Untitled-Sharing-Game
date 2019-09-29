@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\BowTi\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\BowTi\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Untitled Sharing Game.-1242964847.00" t="ExcludeRecursive" />
+    <e p="C:\Users\BowTi\Documents\GameMakerStudio2\Untitled-Sharing-Game\Untitled Sharing Game" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="endScreenManager.cs" t="Include" />
+          <e p="globalScore.cs" t="Include" />
+          <e p="levelManager.cs" t="Include" />
+          <e p="playerInput.cs" t="Include" />
+          <e p="timer.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+      <e p="Untitled Sharing Game.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>
