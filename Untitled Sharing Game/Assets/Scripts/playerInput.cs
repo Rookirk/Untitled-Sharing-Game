@@ -17,7 +17,8 @@ public class playerInput : MonoBehaviour
     public float speed;
     
     //Indicates which player is being played
-    public float playerCharacter;
+    public float player1;
+    
     
     //The movement vectors for movement.
     //Used to move the player with speed etc
@@ -25,7 +26,10 @@ public class playerInput : MonoBehaviour
     //Used to move to set direction of the vector.
     private Vector2 moveInput = new Vector2(0,0);
     //Jump vector, you jump
-    private Vector2 jumpVector = new Vector2(0, 500);
+    private Vector2 jumpVector = new Vector2(0, 800);
+    
+    //Jump Timer
+    private float jumpTime = .5f;
     
     //Idk what the fuck this is it's the rigidbody so it's like the body of the character or something
     private Rigidbody2D rb;
@@ -52,7 +56,7 @@ public class playerInput : MonoBehaviour
         /// Checks if the person is player one and the correct inputs attached to it
         /// If the key is being used, 
         /// (playyer one is WASD, 2 is arrow keys)
-        if (playerCharacter == 1)
+        if (player1 == 1)
         {
             if(Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.LeftArrow))
                 leftCheck = 1;
@@ -62,10 +66,9 @@ public class playerInput : MonoBehaviour
             {
                 jumpCheck = 1;
                 rb.AddForce(jumpVector);
-                jumpCheck = -1;
             }
         }
-        if (playerCharacter == 2)
+        if (player1 == 2)
         {
             if(Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.A))
                 leftCheck = 1;
@@ -75,7 +78,6 @@ public class playerInput : MonoBehaviour
             {
                 jumpCheck = 1;
                 rb.AddForce(jumpVector);
-                jumpCheck = -1;
             }
         }
 
@@ -96,6 +98,16 @@ public class playerInput : MonoBehaviour
             moveInput.y = -1;
         }
         
+        //Counts down the time for when jumpCheck is at -1
+        if(jumpCheck == -1)
+            jumpTime -= Time.deltaTime;
+
+        if (jumpTime <= 0.0f)
+        {
+            jumpCheck = 0;
+            jumpTime = .5f;
+        }
+        
         //Points vector left
         if (leftCheck == 1)
             moveInput.x -= 1;
@@ -105,7 +117,6 @@ public class playerInput : MonoBehaviour
             moveInput.x += 1;
 
         moveVelocity = moveInput.normalized * speed;
-        Debug.Log(jumpCheck);
     }
 
     void FixedUpdate()
