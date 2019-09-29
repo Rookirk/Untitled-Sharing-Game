@@ -32,12 +32,12 @@ public class playerInput : MonoBehaviour
 
     //Movement checks
     //States guide
-    ///  0 = not being used 
-    ///  -1 = specifically for jumps, means that it is in the air
+    ///  0 = not being used
     ///  1 = being used
-    private int leftCheck = -1;
-    private int rightCheck = -1;
-    private int jumpCheck = -1;
+    ///  -1 = specifically for jumps, means that it is in the air
+    private int leftCheck = 0;
+    private int rightCheck = 0;
+    private int jumpCheck = 0;
     
     void Start()
     {
@@ -58,8 +58,12 @@ public class playerInput : MonoBehaviour
                 leftCheck = 1;
             if(Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.RightArrow))
                 rightCheck = 1;
-            if (Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.UpArrow) && jumpCheck == 0)
+            {
                 jumpCheck = 1;
+                rb.AddForce(jumpVector);
+                jumpCheck = -1;
+            }
         }
         if (playerCharacter == 2)
         {
@@ -67,8 +71,12 @@ public class playerInput : MonoBehaviour
                 leftCheck = 1;
             if(Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.D))
                 rightCheck = 1;
-            if(Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKeyDown(KeyCode.W) && jumpCheck == 0)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && !Input.GetKeyDown(KeyCode.W) && jumpCheck == 0)
+            {
                 jumpCheck = 1;
+                rb.AddForce(jumpVector);
+                jumpCheck = -1;
+            }
         }
 
         //Resets the the thing so you dont slide off into oblivion
@@ -82,10 +90,10 @@ public class playerInput : MonoBehaviour
             rightCheck = 0;
             moveInput.x = 0;
         }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            jumpCheck = 0;
-            moveInput.y = 0;
+            jumpCheck = -1;
+            moveInput.y = -1;
         }
         
         //Points vector left
@@ -97,6 +105,7 @@ public class playerInput : MonoBehaviour
             moveInput.x += 1;
 
         moveVelocity = moveInput.normalized * speed;
+        Debug.Log(jumpCheck);
     }
 
     void FixedUpdate()
@@ -104,8 +113,7 @@ public class playerInput : MonoBehaviour
         //Jump vector up
         if (jumpCheck == 1)
         {
-            rb.AddForce(jumpVector);
-            jumpCheck = -1;
+            
         }
 
         rb.AddForce(moveVelocity);
