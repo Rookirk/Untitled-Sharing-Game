@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\BowTi\.Rider2019.2\system\extResources" t="IncludeRecursive" />
@@ -6,15 +6,12 @@
     <e p="C:\Users\BowTi\Documents\GameMakerStudio2\Untitled-Sharing-Game\Untitled Sharing Game" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="Music" t="Include">
-          <e p="test.txt" t="Include" />
-        </e>
         <e p="Scripts" t="Include">
+          <e p="endScreenManager.cs" t="Include" />
+          <e p="globalScore.cs" t="Include" />
           <e p="levelManager.cs" t="Include" />
           <e p="playerInput.cs" t="Include" />
-        </e>
-        <e p="SFX" t="Include">
-          <e p="test.txt" t="Include" />
+          <e p="timer.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
